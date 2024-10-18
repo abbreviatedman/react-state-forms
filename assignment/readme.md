@@ -41,14 +41,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 - In the **/src/** folder, create a new file named `Form.js`.
 - Inside this file, define a functional component named `Form`.
-- Add a form structure with fields for:
+- Add a form structure (the HTML is below!) with fields for:
   - Name
   - Email
   - Age
   - Gender (with inclusive options)
-  - Subscribe to newsletter
+  - Whether to subscribe the user to a newsletter.
 
-    Here’s the HTML structure for the form:
+Here’s the HTML structure for the form:
 
 ```html
 <form>
@@ -83,7 +83,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
   </div>
   <div>
       <label>Subscribe to newsletter:</label>
-      <input type="checkbox" name="subscribe" />
+      <input type="checkbox" name="isSubscribed" />
   </div>
   <button type="submit">Submit</button>
 </form>
@@ -96,13 +96,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
   - `email`
   - `age`
   - `gender`
-  - `subscribe`
-- Define a single dynamic handler function to update the state based on the form field name and value.
+  - `isSubscribed`
+- Either define a separate function to handle a change in each one, updating the state for that field, or define a single dynamic handler function to update the state based on the form field name and value.
 
 5. **Handle Form Submission:**
 
-- Define a function to handle form submission. This function should prevent the default form action and log the form data to the console for now.
-- In the `App` component, render the `Form` component and pass down a function to handle the submission.
+In the App component:
+
+- Define a function to handle form submission. For now, this function should _just_ a) prevent the default form action and b) log the form data to the console.
+- Render the `Form` component and pass down the above function as a prop.
 
 6. **Create the Contact Card Component:**
 
@@ -112,21 +114,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 7. **Define the Contact Card Structure:**
 
-- Structure the Contact Card with Bootstrap classes. Include sections for:
-  - Name
-  - Email
-  - Age
-  - Gender
-  - Subscribe to newsletter status
+In the Contact Card component, take the data in as props and display it in interface elements for the following fields:
+
+- Name
+- Email
+- Age
+- Gender
+- Subscribe to newsletter status
 
 8. **Update the Form Submission Handler:**
 
-- Modify the form submission handler to pass the form data up to the `App` component.
-- In the `App` component, manage the state for the submitted form data and pass it down to the `ContactCard` component.
+In the Form component:
+
+- Set the form submission handler function to call App's function, which should be on the props object.
+- In the `App` component, change the form submission function so that instead of logging the data, it passes it down as props to the `ContactCard` component.
 
 9. **Render the Contact Card:**
 
-- In the `App` component, conditionally render the `ContactCard` component only if there is submitted form data.
+- In the `App` component, render the `ContactCard` component. Don't render it if there is no submitted form data (i.e., conditionally render it)
 - Use Bootstrap classes to style the card, making it visually appealing.
 
 10. **Check Your Browser:**
