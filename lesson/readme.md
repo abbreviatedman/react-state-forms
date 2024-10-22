@@ -11,11 +11,9 @@ npx create-react-app my-app
 cd my-app
 ```
 
-- Open `/src/App.js`: This file is an example component that `create-react-app` starts with. You can delete everything in this file. Then at the top of the file, import React and create a functional component named `App`. Don't forget to export it.
+- Open `/src/App.js`: This file is an example component that `create-react-app` starts with. You can delete everything in this file. Then at the top of the file, create a functional component named `App`. Don't forget to export it.
 
 ```jsx
-import React from 'react';
-
 function App() {
     return <div className="App"></div>;
 }
@@ -46,11 +44,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
     - Sender's Name
     - Message
     - Occasion (with options like Birthday, Anniversary, Holiday, etc.)
-    - Include Personal Note (checkbox)
+    - Includes Personal Note (checkbox)
 
 ```jsx
-import React from 'react';
-
 function Form() {
     return (
         <form>
@@ -76,7 +72,7 @@ function Form() {
             </div>
             <div>
                 <label>Include Personal Note:</label>
-                <input type="checkbox" name="includePersonalNote" />
+                <input type="checkbox" name="includesPersonalNote" />
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -93,14 +89,14 @@ export default Form;
   - `senderName`
   - `message`
   - `occasion`
-  - `includePersonalNote`
+  - `includesPersonalNote`
 - Define a single dynamic handler function to update the state based on the form field name and value.
 
 ```jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function Form() {
-    const [formData, setFormData] = useState({ recipientName: '', senderName: '', message: '', occasion: 'Birthday', includePersonalNote: false });
+    const [formData, setFormData] = useState({ recipientName: '', senderName: '', message: '', occasion: 'Birthday', includesPersonalNote: false });
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -124,7 +120,6 @@ export default Form;
 - In the `App` component, render the `Form` component and pass down a function to handle the submission.
 
 ```jsx
-import React from 'react';
 import Form from './Form';
 
 function App() {
@@ -145,10 +140,10 @@ export default App;
 Update the `Form` component to call the `onSubmit` prop on form submission:
 
 ```jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function Form({ onSubmit }) {
-    const [formData, setFormData] = useState({ recipientName: '', senderName: '', message: '', occasion: 'Birthday', includePersonalNote: false });
+    const [formData, setFormData] = useState({ recipientName: '', senderName: '', message: '', occasion: 'Birthday', includesPersonalNote: false });
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -187,7 +182,7 @@ function Form({ onSubmit }) {
             </div>
             <div>
                 <label>Include Personal Note:</label>
-                <input type="checkbox" name="includePersonalNote" checked={formData.includePersonalNote} onChange={handleChange} />
+                <input type="checkbox" name="includesPersonalNote" checked={formData.includesPersonalNote} onChange={handleChange} />
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -204,9 +199,7 @@ export default Form;
 - This component will receive the form data as props and display it in a styled greeting card format using Bootstrap.
 
 ```jsx
-import React from 'react';
-
-function GreetingCard({ recipientName, senderName, message, occasion, includePersonalNote }) {
+function GreetingCard({ recipientName, senderName, message, occasion, includesPersonalNote }) {
     return (
         <div className="card">
             <div className="card-body">
@@ -215,7 +208,7 @@ function GreetingCard({ recipientName, senderName, message, occasion, includePer
                 <p className="card-text">{message}</p>
                 <footer className="blockquote-footer">
                     From: {senderName}
-                    {includePersonalNote && <small className="d-block mt-2">Personal Note: Have a wonderful day!</small>}
+                    {includesPersonalNote && <small className="d-block mt-2">Personal Note: Have a wonderful day!</small>}
                 </footer>
             </div>
         </div>
@@ -240,7 +233,7 @@ export default GreetingCard;
 - In the `App` component, manage the state for the submitted form data and pass it down to the `GreetingCard` component.
 
 ```jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Form from './Form';
 import GreetingCard from './GreetingCard';
 
@@ -268,7 +261,7 @@ export default App;
 - Use Bootstrap classes to style the card, making it visually appealing.
 
 ```jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Form from './Form';
 import GreetingCard from './GreetingCard';
 
@@ -296,7 +289,7 @@ export default App;
 - Use Bootstrap classes to style the card, making it visually appealing.
 
 ```jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Form from './Form';
 import GreetingCard from './GreetingCard';
 
