@@ -15,7 +15,7 @@ Learn how to use `useState` to manage form state in React and dynamically render
 2. **Form State Management:**
 
 - Use state to manage form fields.
-- Optionally but recommended: Manage all form fields in a single state object.
+- Optional but recommended: Manage all form fields in a single state object.
 
 ### Steps
 
@@ -41,7 +41,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 - In the **/src/** folder, create a new file named `Form.js`.
 - Inside this file, define a functional component named `Form`.
-- Add a form structure (the HTML is below!) with fields for:
+- Add a form structure (the HTML is below) with fields for:
   - Name
   - Email
   - Age
